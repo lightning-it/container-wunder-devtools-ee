@@ -11,9 +11,9 @@ LABEL org.opencontainers.image.source="https://github.com/lightning-it/container
 
 USER 0
 
-# Basis-Tools + Python für Ansible
-RUN microdnf -y update && \
-    microdnf -y install \
+# Base tools + Python for Ansible
+RUN dnf -y update && \
+    dnf -y install \
       bash \
       curl \
       git \
@@ -24,14 +24,14 @@ RUN microdnf -y update && \
       procps-ng \
       python3 \
       python3-pip && \
-    microdnf clean all && \
-    rm -rf /var/cache/yum
+    dnf clean all && \
+    rm -rf /var/cache/dnf
 
 ########################
 # Ansible & Lint-Tools #
 ########################
 
-# Ansible-Core, ansible-lint und yamllint
+# Ansible Core, ansible-lint, yamllint
 RUN pip3 install --no-cache-dir \
       "ansible-core>=2.16,<2.17" \
       "ansible-lint>=24.0.0" \
@@ -67,12 +67,10 @@ RUN curl -sSLo /tmp/terraform-docs.tar.gz \
 # User & Workdir       #
 ########################
 
-# Standard-Workspace
 WORKDIR /workspace
 
-# Nicht-root User
 RUN useradd -m wunder && chown -R wunder /workspace
 USER wunder
 
-# Default: interaktive Shell (kannst du in CI über `command:` überschreiben)
+# Default entrypoint: shell 
 ENTRYPOINT ["/bin/bash"]
