@@ -49,7 +49,7 @@ RUN curl -sSLo /tmp/terraform.zip \
     && rm /tmp/terraform.zip
 
 # TFLint
-ENV TFLINT_VERSION=0.53.0
+ENV TFLINT_VERSION=0.60.0
 RUN curl -sSLo /tmp/tflint.zip \
       "https://github.com/terraform-linters/tflint/releases/download/v${TFLINT_VERSION}/tflint_linux_amd64.zip" \
     && unzip /tmp/tflint.zip -d /usr/local/bin \
