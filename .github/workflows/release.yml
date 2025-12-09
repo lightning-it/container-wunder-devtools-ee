@@ -55,8 +55,6 @@ jobs:
 
       # Run semantic-release (real release)
       - name: Run semantic-release
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
         run: npx semantic-release
 
   # Dry-run job: checks semantic-release config on pull requests
