@@ -74,8 +74,9 @@
       "matchStrings": [
         "TF_VERSION=(?<currentValue>[0-9.]+)"
       ],
-      "datasourceTemplate": "hashicorp",
-      "depNameTemplate": "terraform"
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "hashicorp/terraform",
+      "versioningTemplate": "hashicorp"
     },
     {
       "customType": "regex",
