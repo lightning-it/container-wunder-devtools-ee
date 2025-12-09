@@ -40,7 +40,7 @@
       "matchPackageNames": [
         "ansible-lint"
       ],
-      "allowedVersions": "<7"
+      "allowedVersions": "<7.0.0"
     },
     {
       "matchManagers": [
@@ -50,7 +50,7 @@
         "molecule",
         "molecule-plugins"
       ],
-      "allowedVersions": "<6.1",
+      "allowedVersions": "<6.1.0",
       "rangeStrategy": "pin"
     },
     {
@@ -60,7 +60,7 @@
       "matchPackageNames": [
         "docker"
       ],
-      "allowedVersions": "^6.1",
+      "allowedVersions": ">=6.1.0 <7.0.0",
       "rangeStrategy": "pin"
     }
   ],
@@ -68,38 +68,38 @@
     {
       "customType": "regex",
       "description": "Terraform version pins in Dockerfile",
-      "managerFilePatterns": [
-        "/Dockerfile/"
+      "fileMatch": [
+        "Dockerfile"
       ],
       "matchStrings": [
         "TF_VERSION=(?<currentValue>[0-9.]+)"
       ],
       "datasourceTemplate": "hashicorp",
-      "packageNameTemplate": "terraform"
+      "depNameTemplate": "terraform"
     },
     {
       "customType": "regex",
       "description": "TFLint version pins in Dockerfile",
-      "managerFilePatterns": [
-        "/Dockerfile/"
+      "fileMatch": [
+        "Dockerfile"
       ],
       "matchStrings": [
         "TFLINT_VERSION=(?<currentValue>[0-9.]+)"
       ],
       "datasourceTemplate": "github-tags",
-      "packageNameTemplate": "terraform-linters/tflint"
+      "depNameTemplate": "terraform-linters/tflint"
     },
     {
       "customType": "regex",
       "description": "terraform-docs version pins in Dockerfile",
-      "managerFilePatterns": [
-        "/Dockerfile/"
+      "fileMatch": [
+        "Dockerfile"
       ],
       "matchStrings": [
         "TF_DOCS_VERSION=(?<currentValue>[0-9.]+)"
       ],
       "datasourceTemplate": "github-tags",
-      "packageNameTemplate": "terraform-docs/terraform-docs"
+      "depNameTemplate": "terraform-docs/terraform-docs"
     }
   ]
 }
