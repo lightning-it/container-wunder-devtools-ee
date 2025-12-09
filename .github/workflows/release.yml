@@ -51,6 +51,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Debug tokens
+        run: |
+          echo "GH_TOKEN: ${GH_TOKEN:-<unset>}"
+          echo "GITHUB_TOKEN: ${GITHUB_TOKEN:-<unset>}"
+          env | grep -E 'GITHUB|GH_' || true
+
       # Run semantic-release (real release)
       - name: Run semantic-release
         env:
