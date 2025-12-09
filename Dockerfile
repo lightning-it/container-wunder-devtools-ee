@@ -13,7 +13,7 @@ USER 0
 
 # Base tools + Python for Ansible + Node for renovate validation
 RUN dnf -y update && \
-    dnf -y module enable nodejs:18 && \
+    dnf -y module enable nodejs:20 && \
     dnf -y install \
       bash \
       git \
@@ -38,11 +38,14 @@ RUN pip3 install --no-cache-dir -r /tmp/requirements.txt && \
     rm /tmp/requirements.txt
 
 # Node-based tooling (semantic-release, renovate, etc.)
-COPY package.json package-lock.json /tmp/node-src/
-WORKDIR /tmp/node-src
+WORKDIR /opt/devtools
+COPY package.json package-lock.json ./
 RUN npm ci && \
-    npm cache clean --force && \
-    rm -rf /tmp/node-src
+    npm cache clean --force
+# Expose renovate CLI in PATH for convenience
+RUN ln -sf /opt/devtools/node_modules/.bin/renovate /usr/local/bin/renovate
+# Make npm-installed CLIs available in PATH
+ENV PATH="/opt/devtools/node_modules/.bin:${PATH}"
 
 ########################
 # Terraform Toolchain  #
