@@ -13,6 +13,11 @@
     {
       "matchManagers": ["pip_requirements"],
       "groupName": "Python tools"
+    },
+    {
+      "matchManagers": ["pip_requirements"],
+      "matchPackageNames": ["ansible-core"],
+      "allowedVersions": ">=2.15.13 <2.16.0"
     }
   ],
   "regexManagers": [
