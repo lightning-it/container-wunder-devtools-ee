@@ -4,6 +4,7 @@ yamllint>=1.35.0
 
 # Molecule + Plugins
 molecule==6.0.3
+molecule-plugins[docker]==23.5.3
 
-# Docker-Python-Client (für community.docker usw.)
+# Docker-Python-Client (für community.docker, Molecule Docker driver, etc.)
 docker==6.1.3
