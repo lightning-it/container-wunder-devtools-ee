@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/python-311@sha256:5d65a1eaea4728d261c4766bd5b37713f539774eb0484b888610553b71c0d8c8 AS tools
+FROM registry.access.redhat.com/ubi9/python-311@sha256:99438cd522c6958f0101ee7a35cb7cfeb048e13a20bbe40dd8807ab555961da7 AS tools
 
 LABEL maintainer="Lightning IT"
 LABEL org.opencontainers.image.title="wunder-devtools-ee"
@@ -64,7 +64,7 @@ RUN source /tmp/arch.env && \
     chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
 
-FROM registry.access.redhat.com/ubi9/python-311@sha256:5d65a1eaea4728d261c4766bd5b37713f539774eb0484b888610553b71c0d8c8
+FROM registry.access.redhat.com/ubi9/python-311@sha256:99438cd522c6958f0101ee7a35cb7cfeb048e13a20bbe40dd8807ab555961da7
 
 LABEL maintainer="Lightning IT"
 LABEL org.opencontainers.image.title="ee-wunder-ansible-ubi9"
